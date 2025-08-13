@@ -88,7 +88,7 @@ frontend/
 │   │   ├── HomePage/
 │   │   ├── History/
 │   │   ├── JobMatchPage/
-│   │   ├── DashboardPage/
+│   │   ├── Dashboard/
 │   │   └── ... (other components)
 │   ├── App.js
 │   └── index.css
@@ -112,7 +112,7 @@ backend/
 │   └── errorHandler.js        
 ├── config/          # Database config
 │   └── database.js            
-├── server.cjs       # Entry point                 
+├── server.js       # Entry point                 
 └── .env             # Environment variables
 ```
 
@@ -145,8 +145,8 @@ backend/
 
 ```bash
 # Clone repo
-git clone https://github.com/your-username/resume2jobai.git
-cd resume2jobai
+git clone https://github.com/sai-roshan-dev/ResumeToJobAI.git
+cd ResumeToJobAI
 
 # Backend setup
 cd backend
@@ -193,4 +193,4 @@ MIT License
 
 ## 👨‍💻 Author
 
-YourName - [GitHub](https://github.com/YourGitHubProfile)
+Sai Roshan Neelam - [GitHub](https://github.com/sai-roshan-dev)
