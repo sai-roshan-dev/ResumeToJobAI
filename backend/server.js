@@ -33,6 +33,12 @@ app.use('/api/', apiLimiter);
 app.use(express.json());
 app.use(cors());
 
+// Health check route
+app.get('/', (req, res) => {
+    res.status(200).send('Backend is running!');
+});
+
+
 // Define API routes
 app.use('/api/resumes', resumeRoutes);
 app.use('/api/auth', authRoutes); // Use the new auth routes
