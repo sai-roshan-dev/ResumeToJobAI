@@ -1,0 +1,55 @@
+/* --- File: frontend/src/components/TableFilters/index.css --- */
+
+/* Filters Container */
+.filters-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background-color: #f2f4f7; /* Light, neutral background */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Responsive for small screens */
+}
+
+/* Individual filter group */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+
+/* Label styling */
+.filter-label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Input field styling */
+.filter-input {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.filter-input:focus {
+  border-color: #3498db; /* Blue focus color */
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Small responsive adjustments */
+@media (max-width: 600px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-group {
+    width: 100%;
+  }
+}

@@ -1,0 +1,10 @@
+/* --- File: frontend/src/components/ErrorMessage/index.css --- */
+.error-message-container {
+    padding: 1rem;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: #b91c1c;
+    font-weight: 500;
+}

@@ -1,0 +1,10 @@
+.footer-container {
+    padding: 4px 0; /* reduce height */
+    font-size: 13px; /* slightly smaller text */
+    color: #555; /* softer color */
+    background-color: transparent; /* keep it inline with page bg */
+    border-top: 1px solid rgba(0,0,0,0.05); /* very subtle divider */
+    text-align: center;
+    line-height: 1.4; /* compact spacing */
+    margin-top: 30px;
+}

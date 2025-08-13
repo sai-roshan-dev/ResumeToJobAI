@@ -1,0 +1,10 @@
+/* --- File: frontend/src/components/SuccessMessage/index.css --- */
+.success-message-container {
+    padding: 1rem;
+    background-color: #ecfdf5;
+    border: 1px solid #d1fae5;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: #047857;
+    font-weight: 500;
+}

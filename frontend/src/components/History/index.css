@@ -1,0 +1,131 @@
+/* --- File: frontend/src/components/History/index.css --- */
+
+/* Wrapper */
+.history-wrapper {
+  padding: 20px;
+  background-color: #fafafa; /* Light neutral background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Main Content Container */
+.main-content {
+  background: white;
+  width: 100%;
+  max-width: 1100px;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Heading */
+.history-header {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* No history message */
+.no-history-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+  margin-top: 25px;
+}
+
+/* Filters container styling (assuming TableFilters renders a wrapper) */
+.table-filters {
+  margin-bottom: 20px;
+  padding: 12px;
+  background: #f2f4f7;
+  border-radius: 8px;
+}
+
+/* Table Styles inside ResumeTable component */
+.resume-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.resume-table th,
+.resume-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.resume-table th {
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: left;
+  font-weight: 600;
+}
+
+.resume-table td {
+  color: #555;
+}
+
+.resume-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 14px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+
+.btn-view {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #2980b9;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* Toast messages */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.toast.success {
+  background-color: #27ae60;
+}
+
+.toast.error {
+  background-color: #c0392b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

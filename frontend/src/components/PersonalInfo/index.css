@@ -1,0 +1,26 @@
+.personal-info-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    border: 1px solid #f3f4f6;
+}
+
+.personal-info-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.personal-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.personal-info-list li {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.5;
+}

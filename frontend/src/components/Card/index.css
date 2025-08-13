@@ -1,0 +1,9 @@
+/* --- File: frontend/src/components/Card/index.css --- */
+.card-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    border: 1px solid #e5e7eb;
+}
