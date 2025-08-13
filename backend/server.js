@@ -33,6 +33,11 @@ app.use('/api/', apiLimiter);
 app.use(express.json());
 app.use(cors());
 
+const corsOptions = {
+  origin: 'http://localhost:3000', // Your frontend development URL
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 // Health check route
 app.get('/', (req, res) => {
     res.status(200).send('Backend is running!');
