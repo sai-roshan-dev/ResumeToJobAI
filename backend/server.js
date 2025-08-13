@@ -1,4 +1,3 @@
-/* --- File: backend/server.cjs --- */
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -6,7 +5,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/database');
 const resumeRoutes = require('./routes/resumeRoutes');
-const authRoutes = require('./routes/authRoutes'); // Import the new auth routes
+const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
 // Load environment variables from .env file
@@ -29,24 +28,23 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
-// Middleware
-app.use(express.json());
-app.use(cors());
-
+// Specific CORS configuration to allow only your frontend domain
 const corsOptions = {
   origin: 'http://localhost:3000', // Your frontend development URL
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
-// Health check route
+
+// Middleware
+app.use(express.json());
+
 app.get('/', (req, res) => {
-    res.status(200).send('Backend is running!');
-});
-
-
+    res.status(200).send('Welcome to the Resume to Job AI API!');  
+ });
 // Define API routes
+
 app.use('/api/resumes', resumeRoutes);
-app.use('/api/auth', authRoutes); // Use the new auth routes
+app.use('/api/auth', authRoutes);
 
 // Global Error Handler (must be the last middleware)
 app.use(errorHandler);
