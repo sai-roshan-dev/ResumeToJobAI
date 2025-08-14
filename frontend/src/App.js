@@ -23,7 +23,7 @@ function App() {
             <Header />
           </div>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>} />
