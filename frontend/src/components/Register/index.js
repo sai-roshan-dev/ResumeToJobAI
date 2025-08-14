@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../../config';
 import './index.css';
+
+const API_URL = `${config.API_BASE_URL}/api/auth`;
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -13,7 +16,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      await axios.post(`${API_URL}/register`, { username, email, password });
       alert('Registration successful! Please log in.');
       navigate('/login');
     } catch (error) {
