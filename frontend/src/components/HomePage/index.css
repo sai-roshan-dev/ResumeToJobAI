@@ -4,7 +4,7 @@
 .home-container {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   padding: 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: white;
   color: #1f2937;
 }
 
