@@ -47,7 +47,7 @@ const Header = () => {
         <header className="header-container">
             <div className="header-left">
                 <a href="/" className="header-logo">
-                    Resume2JobAI
+                    ResumeToJobAI
                 </a>
             </div>
             
