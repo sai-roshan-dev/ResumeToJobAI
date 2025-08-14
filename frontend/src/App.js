@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import JobSearchPage from './components/JobSearchPage';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import NotFound from './components/NotFound'; 
 import './index.css';
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
             <Route path="/job-match" element={<PrivateRoute><JobMatchPage /></PrivateRoute>} />
             <Route path="/analysis/:id" element={<PrivateRoute><AnalysisPage /></PrivateRoute>} />
+            <Route path="/not-found" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
     </AuthProvider>
