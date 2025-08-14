@@ -1,3 +1,4 @@
+/* --- File: backend/server.cjs --- */
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -17,18 +18,7 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Security Middleware (Helmet)
-app.use(helmet());
-
-// Rate Limiting Middleware
-const apiLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'Too many requests from this IP, please try again after 15 minutes.'
-});
-app.use('/api/', apiLimiter);
-
-// Specific CORS configuration to allow only your frontend domain
+// --- CORS configuration (FIRST middleware) ---
 const allowedOrigins = [
   'http://localhost:3000',
   'https://resumetojobai.vercel.app'
@@ -42,20 +32,33 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
+  credentials: true, // allow cookies/headers
   optionsSuccessStatus: 200
 };
+
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // handle preflight for all routes
 
+// Security Middleware (Helmet)
+app.use(helmet());
 
+// Rate Limiting Middleware
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests from this IP, please try again after 15 minutes.'
+});
+app.use('/api/', apiLimiter);
 
-// Middleware
+// Middleware for JSON parsing
 app.use(express.json());
 
+// Root endpoint
 app.get('/', (req, res) => {
-    res.status(200).send('Welcome to the Resume to Job AI API!');  
- });
-// Define API routes
+    res.status(200).send('Welcome to the Resume to Job AI API!');
+});
 
+// Define API routes
 app.use('/api/resumes', resumeRoutes);
 app.use('/api/auth', authRoutes);
 
