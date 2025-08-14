@@ -29,11 +29,24 @@ const apiLimiter = rateLimit({
 app.use('/api/', apiLimiter);
 
 // Specific CORS configuration to allow only your frontend domain
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://resumetojobai.vercel.app'
+];
+
 const corsOptions = {
-  origin: 'http://localhost:3000', // Your frontend development URL
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+
 
 // Middleware
 app.use(express.json());
