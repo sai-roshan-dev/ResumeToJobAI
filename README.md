@@ -1,4 +1,4 @@
-# 🚀 Resume2JobAI 🌟
+# 🚀 ResumeToJobAI 🌟
 
 **An AI-Powered Resume & Job Matching Platform**
 
@@ -12,7 +12,7 @@
 
 ## 📖 Overview
 
-Resume2JobAI is a **full-stack web application** that helps job seekers:
+ResumeToJobAI is a **full-stack web application** that helps job seekers:
 
 * Optimize resumes with AI insights
 * Match skills to real-time job listings
@@ -44,7 +44,7 @@ By leveraging **Google Gemini AI** and **Adzuna API**, the platform analyzes res
 
 ---
 
-## 💡 Why Resume2JobAI is Unique
+## 💡 Why ResumeToJobAI is Unique
 
 * **🌟 One-Stop Career Tool** – Improve your resume and find jobs in one platform.
 * **🤖 Actionable AI Insights** – Extract key skills for job searches, not just a score.
