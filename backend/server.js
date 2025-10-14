@@ -37,7 +37,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('/*', cors(corsOptions)); // handle preflight for all routes
+// Removed app.options line - cors middleware already handles preflight requests
 
 // Security Middleware (Helmet)
 app.use(helmet());
