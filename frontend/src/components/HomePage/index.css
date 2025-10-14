@@ -39,8 +39,8 @@
 .hero-upload {
   flex: 1 1 40%;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 /* How It Works Section */
@@ -76,11 +76,6 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
 .how-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
@@ -90,6 +85,280 @@
 .how-card p {
   font-size: 1rem;
   color: #6b7280;
+}
+
+/* ========== SPECIAL ANIMATED ICONS ========== */
+
+/* ========== ROCKET ICON (Hero Title) ========== */
+.icon-rocket-special {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: rocketLaunch 3s ease-in-out infinite;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.icon-rocket-special::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 35px solid #1e3a8a;
+  top: 0;
+  left: 5px;
+}
+
+.icon-rocket-special::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(to bottom, #ef4444, #f97316);
+  border-radius: 50%;
+  bottom: -8px;
+  left: 14px;
+  animation: flame 0.3s ease-in-out infinite alternate;
+  box-shadow: 0 0 15px #ef4444;
+}
+
+@keyframes rocketLaunch {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-15px) rotate(-10deg); }
+}
+
+@keyframes flame {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(1.3) translateY(5px); opacity: 0.7; }
+}
+
+/* ========== UPLOAD ICON (Card 1) ========== */
+.icon-upload-special {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.upload-paper {
+  width: 50px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  animation: paperSlide 2s ease-in-out infinite;
+}
+
+.upload-paper::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: white;
+  top: 15px;
+  left: 10px;
+  box-shadow: 0 8px 0 white, 0 16px 0 white;
+}
+
+.upload-arrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #10b981;
+  position: absolute;
+  top: 0;
+  left: 25px;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+.upload-arrow::after {
+  content: '';
+  width: 4px;
+  height: 25px;
+  background: #10b981;
+  position: absolute;
+  top: 20px;
+  left: -2px;
+}
+
+@keyframes paperSlide {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(15px); opacity: 0.5; }
+}
+
+/* ========== AI ICON (Card 2) ========== */
+.icon-ai-special {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.ai-core {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.ai-core::before,
+.ai-core::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.ai-core::before {
+  top: 8px;
+  left: 6px;
+}
+
+.ai-core::after {
+  top: 8px;
+  right: 6px;
+}
+
+.ai-orbit {
+  position: absolute;
+  border: 2px solid #8b5cf6;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.ai-orbit-1 {
+  width: 50px;
+  height: 50px;
+  top: 15px;
+  left: 15px;
+  animation: orbit 3s linear infinite;
+}
+
+.ai-orbit-2 {
+  width: 65px;
+  height: 65px;
+  top: 7.5px;
+  left: 7.5px;
+  animation: orbit 4s linear infinite reverse;
+}
+
+.ai-orbit-3 {
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  animation: orbit 5s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ========== SUCCESS ICON (Card 3) ========== */
+.icon-success-special {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.success-circle {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #10b981;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  animation: successPop 2s ease-in-out infinite;
+}
+
+.success-check {
+  width: 12px;
+  height: 24px;
+  border: solid #10b981;
+  border-width: 0 5px 5px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 22px;
+  left: 32px;
+  animation: checkDraw 2s ease-in-out infinite;
+}
+
+.success-sparkle {
+  width: 8px;
+  height: 8px;
+  background: #fbbf24;
+  position: absolute;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.sparkle-1 {
+  top: 5px;
+  left: 35px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation-delay: 0s;
+}
+
+.sparkle-2 {
+  top: 15px;
+  right: 5px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation-delay: 0.3s;
+}
+
+.sparkle-3 {
+  bottom: 15px;
+  right: 10px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation-delay: 0.6s;
+}
+
+.sparkle-4 {
+  bottom: 5px;
+  left: 10px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation-delay: 0.9s;
+}
+
+@keyframes successPop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes checkDraw {
+  0%, 40% { transform: rotate(45deg) scale(0); }
+  60%, 100% { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
 }
 
 /* Responsive */
