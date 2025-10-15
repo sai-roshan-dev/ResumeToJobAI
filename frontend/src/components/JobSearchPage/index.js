@@ -6,8 +6,10 @@ import './index.css';
 import LoadingSpinner from '../LoadingSpinner';
 import ErrorMessage from '../ErrorMessage';
 import Toast from '../Toast';
+import config from '../../config'; // 1. IMPORT THE CONFIG FILE
 
-const API_URL = "http://localhost:5000/api/resumes/search-jobs";
+// 2. USE THE CONFIG FILE TO BUILD THE API URL
+const API_URL = `${config.API_BASE_URL}/api/resumes/search-jobs`;
 
 const JobSearchPage = () => {
     const [file, setFile] = useState(null);
@@ -62,6 +64,7 @@ const JobSearchPage = () => {
         formData.append('filters', JSON.stringify(filters));
 
         try {
+            // No changes needed here, it already uses the updated API_URL variable
             const response = await axios.post(API_URL, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',

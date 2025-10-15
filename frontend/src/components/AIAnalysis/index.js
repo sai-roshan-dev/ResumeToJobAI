@@ -1,53 +1,62 @@
 /* --- File: frontend/src/components/AIAnalysis/index.js --- */
 import React from 'react';
+import { LuLightbulb, LuThumbsUp, LuBriefcase } from 'react-icons/lu';
 import './index.css';
 
+// A reusable card component for consistent styling
+const AnalysisCard = ({ icon, title, items, emptyText }) => (
+    <div className="analysis-card">
+        <div className="card-header">
+            <div className="card-icon">{icon}</div>
+            <h4 className="card-title">{title}</h4>
+        </div>
+        <div className="card-body">
+            {items && items.length > 0 ? (
+                <ul className="suggestions-list">
+                    {items.map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
+                </ul>
+            ) : (
+                <p>{emptyText}</p>
+            )}
+        </div>
+    </div>
+);
+
 const AIAnalysis = ({ analysis }) => {
+    // Check if analysis or aiAnalysis data is missing
     if (!analysis || !analysis.aiAnalysis) {
-        return null;
+        return (
+            <div className="ai-analysis-section">
+                <p>AI analysis is not available for this resume.</p>
+            </div>
+        );
     }
 
-    const { upskillSuggestions, strengthsIdentified ,recommendedJobRoles} = analysis.aiAnalysis;
+    const { upskillSuggestions, strengthsIdentified, recommendedJobRoles } = analysis.aiAnalysis;
 
     return (
         <div className="ai-analysis-section">
-    {/* Upskill Suggestions */}
-    <h4 className="analysis-title">Upskill Suggestions:</h4>
-    {upskillSuggestions && upskillSuggestions.length > 0 ? (
-        <ul className="suggestions-list">
-            {upskillSuggestions.map((suggestion, index) => (
-                <li key={index}>{suggestion}</li>
-            ))}
-        </ul>
-    ) : (
-        <p>No upskill suggestions provided.</p>
-    )}
-
-    {/* Strengths Identified */}
-    <h4 className="analysis-title" style={{ marginTop: '1.5rem' }}>Strengths Identified:</h4>
-    {strengthsIdentified && strengthsIdentified.length > 0 ? (
-        <ul className="suggestions-list">
-            {strengthsIdentified.map((strength, index) => (
-                <li key={index}>{strength}</li>
-            ))}
-        </ul>
-    ) : (
-        <p>No strengths identified.</p>
-    )}
-
-    {/* Recommended Job Roles */}
-    <h4 className="analysis-title" style={{ marginTop: '1.5rem' }}>Recommended Job Roles:</h4>
-    {recommendedJobRoles && recommendedJobRoles.length > 0 ? (
-        <ul className="suggestions-list">
-            {recommendedJobRoles.map((role, index) => (
-                <li key={index}>{role}</li>
-            ))}
-        </ul>
-    ) : (
-        <p>No job roles recommended.</p>
-    )}
-</div>
-
+            <AnalysisCard
+                icon={<LuLightbulb size={20} />}
+                title="Upskill Suggestions"
+                items={upskillSuggestions}
+                emptyText="No upskill suggestions were provided."
+            />
+            <AnalysisCard
+                icon={<LuThumbsUp size={20} />}
+                title="Strengths Identified"
+                items={strengthsIdentified}
+                emptyText="No specific strengths were identified from the resume."
+            />
+            <AnalysisCard
+                icon={<LuBriefcase size={20} />}
+                title="Recommended Job Roles"
+                items={recommendedJobRoles}
+                emptyText="No job roles were recommended based on the resume."
+            />
+        </div>
     );
 };
 

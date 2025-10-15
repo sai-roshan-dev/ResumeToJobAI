@@ -1,6 +1,8 @@
+// --- File: frontend/src/contexts/AuthContext.js ---
+
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import config from '../config'; // Import the new config file
+import config from '../config';
 
 const API_URL = `${config.API_BASE_URL}/api/auth`;
 const AuthContext = createContext();
@@ -11,13 +13,28 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setIsAuthenticated(true);
-      // We could also fetch user data here if needed
-    }
-    setLoading(false);
+    const loadUser = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+          // Use your existing '/api/auth/profile' endpoint
+          const response = await axios.get(`${API_URL}/profile`); 
+          setUser(response.data.user); // The user object is in response.data.user
+          setIsAuthenticated(true);
+        } catch (error) {
+          // If the token is invalid or expired, log the user out
+          console.error('Failed to load user:', error);
+          localStorage.removeItem('token');
+          delete axios.defaults.headers.common['Authorization'];
+          setUser(null);
+          setIsAuthenticated(false);
+        }
+      }
+      setLoading(false);
+    };
+
+    loadUser();
   }, []);
 
   const login = async (email, password) => {
@@ -44,7 +61,8 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, loading, login, logout }}>
-      {children}
+      {/* Render children only when not loading to prevent race conditions */}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

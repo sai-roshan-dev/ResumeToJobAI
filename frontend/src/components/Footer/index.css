@@ -1,10 +1,15 @@
 .footer-container {
-    padding: 4px 0; /* reduce height */
-    font-size: 13px; /* slightly smaller text */
-    color: #555; /* softer color */
-    background-color: transparent; /* keep it inline with page bg */
-    border-top: 1px solid rgba(0,0,0,0.05); /* very subtle divider */
+    position: fixed;          /* keeps footer at bottom */
+    bottom: 0;                /* align to bottom of the viewport */
+    left: 0;
+    width: 100%;              /* span full width */
+    height: 90px;             /* fixed height */
+    padding: 4px 0;
+    font-size: 13px;
+    color: #555;
+    background-color: #fff;   /* give it a solid background (optional) */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     text-align: center;
-    line-height: 1.4; /* compact spacing */
-    margin-top: 100px;
+    line-height: 50px;        /* vertically center text inside the 50px height */
+    z-index: 100;             /* keep it above other content */
 }

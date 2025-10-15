@@ -1,14 +1,15 @@
 // --- File: frontend/src/components/ResumeUpload/index.js ---
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react'; // Import useContext
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
 import { LuUpload, LuFileText, LuX } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../LoadingSpinner';
 import ErrorMessage from '../ErrorMessage';
-import Toast from '../Toast'; // Import the new Toast component
+import Toast from '../Toast';
 import './index.css';
-import config from '../../config'; // Import the new config file
+import config from '../../config';
+import { AuthContext } from '../../contexts/AuthContext'; // Import AuthContext
 
 const API_URL = `${config.API_BASE_URL}/api/resumes`;
 
@@ -18,6 +19,7 @@ const ResumeUpload = () => {
     const [error, setError] = useState('');
     const [toast, setToast] = useState({ message: '', type: '' });
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext); // Use useContext with AuthContext
     
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
       onDrop: (acceptedFiles) => {
@@ -32,6 +34,12 @@ const ResumeUpload = () => {
     });
 
     const handleUpload = async () => {
+        if (!user) {
+            setToast({ message: 'Please log in to upload a resume.', type: 'error' });
+            setTimeout(() => navigate('/login'), 1500);
+            return;
+        }
+
         if (!file) {
             setError('Please select a file to upload.');
             return;
@@ -45,9 +53,11 @@ const ResumeUpload = () => {
         setToast({ message: '', type: '' });
 
         try {
+            const token = localStorage.getItem('token');
             const response = await axios.post(`${API_URL}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                    'Authorization': `Bearer ${token}`,
                 },
             });
             
@@ -59,8 +69,14 @@ const ResumeUpload = () => {
 
         } catch (err) {
             console.error('API Error:', err);
-            setError('Upload failed. Please check your backend server.');
-            setToast({ message: 'Upload failed. Please try again.', type: 'error' });
+            if (err.response && err.response.status === 401) {
+                setError('Authentication failed. Please log in again.');
+                setToast({ message: 'Authentication failed. Redirecting to login.', type: 'error' });
+                setTimeout(() => navigate('/login'), 1500);
+            } else {
+                setError('Upload failed. Please check your backend server.');
+                setToast({ message: 'Upload failed. Please try again.', type: 'error' });
+            }
         } finally {
             setIsLoading(false);
         }
