@@ -229,7 +229,7 @@ const JobSearchPage = () => {
                             <span>Searching Jobs...</span>
                         ) : (
                             <>
-                                <LuBriefcase size={20} />
+                                
                                 <span>Find My Perfect Jobs</span>
                             </>
                         )}
